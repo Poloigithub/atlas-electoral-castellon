@@ -149,6 +149,31 @@ def main():
                     "independientes). La asignación oficial puede variar.",
         }
 
+    # summary.json: agregados por partido canónico (nivel provincia y municipio)
+    summary = {}
+    for eid, d in elections.items():
+        prov = defaultdict(int)
+        mun_summary = {}
+        censo = blanco = nulos = 0
+        for code, m in d["municipios"].items():
+            mv = defaultdict(int)
+            for ccode, (v, _) in m["votes"].items():
+                pid = d["pmap"].get(ccode, "otros")
+                mv[pid] += v
+                prov[pid] += v
+            censo += m["censo"]
+            blanco += m["blanco"]
+            nulos += m["nulos"]
+            mun_summary[code] = {
+                "censo": m["censo"], "blanco": m["blanco"], "nulos": m["nulos"],
+                "votes": dict(mv),
+            }
+        summary[eid] = {
+            "censo": censo, "blanco": blanco, "nulos": nulos,
+            "prov": dict(prov), "mun": mun_summary,
+        }
+    (OUT / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, separators=(",", ":")))
+
     # escribir todo
     for eid, d in elections.items():
         (ELEC / f"{eid}.json").write_text(

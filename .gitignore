@@ -1,2 +1,5 @@
+web/node_modules/
+web/dist/
+web/public/data/
 pipeline/raw/
-node_modules/
+.DS_Store
