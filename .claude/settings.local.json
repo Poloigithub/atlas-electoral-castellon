@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(curl -sI --max-time 30 \"https://infoelectoral.interior.gob.es/estaticos/docxl/apliextr/04201905_MESA.zip\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} size:%{size_download} time:%{time_total}\\\\n\" --max-time 60 -L \"https://infoelectoral.interior.gob.es/estaticos/docxl/apliextr/04201905_MESA.zip\" -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\)\" --range 0-1000)",
+      "Bash(git init *)",
+      "Bash(python3 -c ' *)",
+      "Bash(unzip -l 04202305_MUNI.zip)",
+      "Bash(unzip -l 04202305_MESA.zip)"
+    ]
+  }
+}
