@@ -1,13 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import { Card, Select, PartyDot } from "./ui.jsx";
+import { Card, Select, PartyDot, MiniButton } from "./ui.jsx";
 import { loadDiputacion } from "../lib/data.js";
+import { chartToPng } from "../lib/export.js";
 
 export default function DiputacionPanel({ index, parties }) {
   const [dip, setDip] = useState(null);
   const [sel, setSel] = useState(null);
+  const chartRef = useRef(null);
 
   useEffect(() => {
     loadDiputacion().then((d) => {
@@ -40,7 +42,10 @@ export default function DiputacionPanel({ index, parties }) {
         title="Diputación Provincial de Castellón · composición estimada"
         subtitle="Estimación propia aplicando la LOREG: reparto de diputados entre partidos judiciales por población y D'Hondt sobre los votos de las municipales. Puede diferir en ±1 escaño de la composición oficial."
       >
-        <div className="h-80">
+        <div className="mb-2 flex justify-end">
+          <MiniButton onClick={() => chartToPng(chartRef.current, "diputacion-composicion.png")} title="Descargar como imagen">PNG</MiniButton>
+        </div>
+        <div className="h-80" ref={chartRef}>
           <ResponsiveContainer>
             <BarChart data={rows} margin={{ top: 8, right: 16, bottom: 4, left: -24 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />

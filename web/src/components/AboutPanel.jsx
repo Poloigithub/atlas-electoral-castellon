@@ -25,9 +25,14 @@ export default function AboutPanel() {
             pertenecía a la provincia de València hasta 1995.
           </li>
           <li>
-            <b>Variables socioeconómicas (2015–2023):</b> Atlas de Distribución de Renta de los Hogares del{" "}
+            <b>Variables socioeconómicas:</b> Atlas de Distribución de Renta de los Hogares del{" "}
             <a className="text-sky-600 hover:underline" href="https://www.ine.es" target="_blank" rel="noreferrer">INE</a>{" "}
-            por sección censal y municipio (renta, edad, hogares, Gini, P80/P20, nacionalidad).
+            2015–2023 por sección censal (renta, edad, hogares, Gini, P80/P20, nacionalidad); Censo anual
+            de población (INE) 2021–2024 por sección (% educación superior y tasa de paro censal); Padrón
+            (INE) 1996–2025 (crecimiento de población municipal); paro registrado del{" "}
+            <a className="text-sky-600 hover:underline" href="https://www.sepe.es" target="_blank" rel="noreferrer">SEPE</a>{" "}
+            2006–2025 (mayo de cada año, por 100 habitantes); y distancia a la costa calculada desde la
+            cartografía.
           </li>
           <li>
             <b>Cartografía:</b> seccionado censal 2023 del INE, simplificado para web.
@@ -64,6 +69,14 @@ export default function AboutPanel() {
             <i>NEP</i> (número efectivo de partidos, Laakso-Taagepera) mide la fragmentación (1/Σp²); la{" "}
             <i>volatilidad</i> es el índice de Pedersen (½·Σ|Δ%|) entre las dos elecciones comparadas, calculado
             sobre las familias canónicas de partidos.
+          </li>
+          <li>
+            <b>Panel socioeconómico:</b> el año del indicador se elige automáticamente (el más cercano a la
+            elección), y se muestra en pantalla. La <i>r parcial</i> descuenta el efecto de la edad media. El{" "}
+            <i>mapa de residuos</i> pinta la diferencia entre el voto real y el predicho por una regresión
+            lineal simple sobre el indicador elegido. Las <i>secciones gemelas</i> se buscan por distancia
+            euclídea sobre los indicadores estandarizados. Todo es descriptivo: correlación no implica
+            causalidad.
           </li>
         </ul>
       </Card>

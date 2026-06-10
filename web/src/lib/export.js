@@ -21,6 +21,13 @@ export function rowsToCsv(rows, filename) {
   downloadBlob(new Blob(["﻿" + txt], { type: "text/csv;charset=utf-8" }), filename);
 }
 
+// PNG de un gráfico Recharts: busca el SVG dentro del contenedor.
+// (La leyenda HTML no se incluye; ejes y series sí.)
+export function chartToPng(container, filename, scale = 2) {
+  const svg = container?.querySelector("svg.recharts-surface") ?? container?.querySelector("svg");
+  if (svg) svgToPng(svg, filename, scale);
+}
+
 export async function svgToPng(svgEl, filename, scale = 2) {
   if (!svgEl) return;
   const xml = new XMLSerializer().serializeToString(svgEl);

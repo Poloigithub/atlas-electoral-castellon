@@ -11,6 +11,7 @@ por sección censal, cruzados con variables socioeconómicas del INE.
   - `parse_mir.py` — parsea los DAT de ancho fijo del MIR (generales, municipales, europeas) y filtra la provincia 12.
   - `parse_gva.py` — parsea los CSV de Dades Obertes GVA (autonómicas a Corts 1987–2023).
   - `parse_argos.py` — autonómicas de 1983 desde el Archivo Histórico Electoral de ARGOS (nivel municipio).
+  - `parse_extra.py` — indicadores adicionales: educación y paro censal por sección (Censo anual INE), crecimiento de población (Padrón 1996–2025), paro registrado (SEPE 2006–2025) y distancia a la costa (calculada de la cartografía).
   - `parse_ine.py` — Atlas de Renta de los Hogares del INE (renta, edad, Gini… por sección censal, 2015–2023).
   - `parties.py` / `normalize.py` — tabla canónica de partidos (eje ideológico, bloques, colores), resumen agregado y estimación de la Diputación Provincial.
   - `out/` — JSON resultantes (versionados; son los datos que sirve la web).
@@ -35,6 +36,7 @@ python3 parse_gva.py   # requiere los corts*.csv en raw/ (ver parse_gva.py)
 python3 parse_argos.py # autonómicas 1983 (descarga de argos.gva.es con caché)
 python3 parse_ine.py
 python3 normalize.py
+python3 parse_extra.py # indicadores extra (INE censo/padrón, SEPE, costa); tras parse_ine
 ```
 
 La cartografía se genera con mapshaper a partir del seccionado censal 2023 del INE

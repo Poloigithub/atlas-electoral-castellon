@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
 import { Card, Select, SearchSelect, MiniButton } from "./ui.jsx";
 import { loadSummary, participation, fmtPct } from "../lib/data.js";
 import { useHashParam } from "../lib/urlState.js";
-import { rowsToCsv } from "../lib/export.js";
+import { rowsToCsv, chartToPng } from "../lib/export.js";
 
 const KINDS = [
   ["todas", "Todas"],
@@ -17,6 +17,7 @@ const KINDS = [
 
 export default function EvolutionPanel({ index, parties, municipios }) {
   const [summary, setSummary] = useState(null);
+  const chartRef = useRef(null);
   const [kind, setKind] = useHashParam("ek", "generales");
   const [scope, setScope] = useHashParam("eamb", "prov");
   const [mode, setMode] = useHashParam("emodo", "partidos");
@@ -132,11 +133,12 @@ export default function EvolutionPanel({ index, parties, municipios }) {
           <option value="bloques">% voto por bloque ideológico</option>
           <option value="participacion">Participación</option>
         </Select>
-        <div className="ml-auto">
+        <div className="ml-auto flex gap-1.5">
+          <MiniButton onClick={() => chartToPng(chartRef.current, `evolucion-${kind}-${scope}-${mode}.png`)} title="Descargar como imagen">PNG</MiniButton>
           <MiniButton onClick={exportCsv} title="Descargar la serie como CSV">CSV</MiniButton>
         </div>
       </div>
-      <div className="h-[460px]">
+      <div className="h-[460px]" ref={chartRef}>
         <ResponsiveContainer>
           <LineChart data={rows} margin={{ top: 8, right: 16, bottom: 4, left: -16 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />

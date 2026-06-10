@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import { Card, Select, SearchSelect, ResultBar } from "./ui.jsx";
+import { Card, Select, SearchSelect, ResultBar, MiniButton } from "./ui.jsx";
+import { chartToPng } from "../lib/export.js";
 import {
   loadSummary, loadSocio, loadElection, rankVotes, participation, fmtInt, fmtNum, fmtPct,
 } from "../lib/data.js";
@@ -11,6 +12,7 @@ import { useHashParam } from "../lib/urlState.js";
 export default function MunicipioPanel({ index, parties, municipios, code, setCode }) {
   const [summary, setSummary] = useState(null);
   const [socio, setSocio] = useState(null);
+  const chartRef = useRef(null);
   const [kind, setKind] = useHashParam("mtipo", "municipales");
   const [council, setCouncil] = useState(null); // {year: {pid: concejales}}
 
@@ -94,6 +96,7 @@ export default function MunicipioPanel({ index, parties, municipios, code, setCo
             <option value="autonomicas">Autonòmiques</option>
             <option value="europeas">Europeas</option>
           </Select>
+          <MiniButton onClick={() => chartToPng(chartRef.current, `concejales-${code}.png`)} title="Descargar el gráfico de concejales">PNG</MiniButton>
           {socioRow && (
             <div className="ml-auto flex gap-4 text-center text-[11px] text-slate-500">
               <div><div className="text-sm font-semibold text-slate-700">{fmtInt(socioRow.pob?.[lastSocioYear])}</div>habitantes ({lastSocioYear})</div>
@@ -159,7 +162,7 @@ export default function MunicipioPanel({ index, parties, municipios, code, setCo
         {council == null ? (
           <div className="py-8 text-center text-sm text-slate-400">Cargando concejales…</div>
         ) : councilRows.rows?.length ? (
-          <div className="h-72">
+          <div className="h-72" ref={chartRef}>
             <ResponsiveContainer>
               <BarChart data={councilRows.rows} margin={{ top: 8, right: 16, bottom: 4, left: -24 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
