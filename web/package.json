@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "data": "rm -rf public/data && mkdir -p public/data && cp -R ../pipeline/out/ public/data/",
+    "data": "rm -rf public/data && mkdir -p public/data && cp -R ../pipeline/out/. public/data/",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
