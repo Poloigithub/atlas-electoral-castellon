@@ -1,0 +1,122 @@
+{
+ "eu": {
+  "label": "EU-IU (PCE/EUPV)",
+  "color": "#8B0000",
+  "ideol": -8.0,
+  "bloc": "izquierda"
+ },
+ "podemos": {
+  "label": "Podemos / Unidas Podemos",
+  "color": "#6B2E68",
+  "ideol": -7.0,
+  "bloc": "izquierda"
+ },
+ "comp-pod": {
+  "label": "Compromís–Podemos",
+  "color": "#C0392B",
+  "ideol": -6.0,
+  "bloc": "izquierda"
+ },
+ "sumar": {
+  "label": "Compromís–Sumar",
+  "color": "#E11D74",
+  "ideol": -6.0,
+  "bloc": "izquierda"
+ },
+ "erpv": {
+  "label": "ERPV",
+  "color": "#FFB232",
+  "ideol": -6.5,
+  "bloc": "izquierda"
+ },
+ "compromis": {
+  "label": "Compromís (BLOC/UPV)",
+  "color": "#E65420",
+  "ideol": -5.5,
+  "bloc": "izquierda"
+ },
+ "verdes": {
+  "label": "Els Verds / Los Verdes",
+  "color": "#4CAF50",
+  "ideol": -4.5,
+  "bloc": "izquierda"
+ },
+ "psoe": {
+  "label": "PSOE (PSPV)",
+  "color": "#E30613",
+  "ideol": -3.5,
+  "bloc": "izquierda"
+ },
+ "pacma": {
+  "label": "PACMA",
+  "color": "#ADBE18",
+  "ideol": -2.0,
+  "bloc": "izquierda"
+ },
+ "cds": {
+  "label": "CDS",
+  "color": "#1FA588",
+  "ideol": 0.0,
+  "bloc": "centro"
+ },
+ "upyd": {
+  "label": "UPyD",
+  "color": "#E9008C",
+  "ideol": 0.5,
+  "bloc": "centro"
+ },
+ "ucd": {
+  "label": "UCD",
+  "color": "#0E7C61",
+  "ideol": 1.5,
+  "bloc": "centro"
+ },
+ "cs": {
+  "label": "Ciudadanos",
+  "color": "#EB6109",
+  "ideol": 3.0,
+  "bloc": "centro"
+ },
+ "uv": {
+  "label": "Unió Valenciana",
+  "color": "#2C7DA0",
+  "ideol": 5.0,
+  "bloc": "derecha"
+ },
+ "pp": {
+  "label": "PP (AP/CP)",
+  "color": "#1E5FA8",
+  "ideol": 6.0,
+  "bloc": "derecha"
+ },
+ "vox": {
+  "label": "Vox",
+  "color": "#63BE21",
+  "ideol": 9.0,
+  "bloc": "derecha"
+ },
+ "salf": {
+  "label": "SALF",
+  "color": "#556B2F",
+  "ideol": 8.0,
+  "bloc": "derecha"
+ },
+ "exder": {
+  "label": "Extrema derecha (FN/E2000)",
+  "color": "#3B3B6D",
+  "ideol": 9.5,
+  "bloc": "derecha"
+ },
+ "indep": {
+  "label": "Independientes/locales",
+  "color": "#7F8C8D",
+  "ideol": null,
+  "bloc": "otros"
+ },
+ "otros": {
+  "label": "Otros",
+  "color": "#9CA3AF",
+  "ideol": null,
+  "bloc": "otros"
+ }
+}

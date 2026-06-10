@@ -1,0 +1,370 @@
+[
+ {
+  "id": "gen-197903",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 1979,
+  "month": 3,
+  "secciones": false
+ },
+ {
+  "id": "mun-197904",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 1979,
+  "month": 4,
+  "secciones": false
+ },
+ {
+  "id": "gen-198210",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 1982,
+  "month": 10,
+  "secciones": true
+ },
+ {
+  "id": "mun-198305",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 1983,
+  "month": 5,
+  "secciones": false
+ },
+ {
+  "id": "gen-198606",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 1986,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "aut-198706",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 1987,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "eur-198706",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 1987,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "mun-198706",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 1987,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "eur-198906",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 1989,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "gen-198910",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 1989,
+  "month": 10,
+  "secciones": true
+ },
+ {
+  "id": "aut-199105",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 1991,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "mun-199105",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 1991,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "gen-199306",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 1993,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "eur-199406",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 1994,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "aut-199505",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 1995,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "mun-199505",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 1995,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "gen-199603",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 1996,
+  "month": 3,
+  "secciones": true
+ },
+ {
+  "id": "aut-199906",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 1999,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "eur-199906",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 1999,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "mun-199906",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 1999,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "gen-200003",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2000,
+  "month": 3,
+  "secciones": true
+ },
+ {
+  "id": "aut-200305",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 2003,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "mun-200305",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 2003,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "gen-200403",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2004,
+  "month": 3,
+  "secciones": true
+ },
+ {
+  "id": "eur-200406",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 2004,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "aut-200705",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 2007,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "mun-200705",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 2007,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "gen-200803",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2008,
+  "month": 3,
+  "secciones": true
+ },
+ {
+  "id": "eur-200906",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 2009,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "aut-201105",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 2011,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "mun-201105",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 2011,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "gen-201111",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2011,
+  "month": 11,
+  "secciones": true
+ },
+ {
+  "id": "eur-201405",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 2014,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "aut-201505",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 2015,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "mun-201505",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 2015,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "gen-201512",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2015,
+  "month": 12,
+  "secciones": true
+ },
+ {
+  "id": "gen-201606",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2016,
+  "month": 6,
+  "secciones": true
+ },
+ {
+  "id": "aut-201904",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 2019,
+  "month": 4,
+  "secciones": true
+ },
+ {
+  "id": "gen-201904",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2019,
+  "month": 4,
+  "secciones": true
+ },
+ {
+  "id": "eur-201905",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 2019,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "mun-201905",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 2019,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "gen-201911",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2019,
+  "month": 11,
+  "secciones": true
+ },
+ {
+  "id": "aut-202305",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 2023,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "mun-202305",
+  "kind": "municipales",
+  "label": "Municipales",
+  "year": 2023,
+  "month": 5,
+  "secciones": true
+ },
+ {
+  "id": "gen-202307",
+  "kind": "generales",
+  "label": "Generales",
+  "year": 2023,
+  "month": 7,
+  "secciones": true
+ },
+ {
+  "id": "eur-202406",
+  "kind": "europeas",
+  "label": "Europeas",
+  "year": 2024,
+  "month": 6,
+  "secciones": true
+ }
+]
