@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { loadIndex, loadParties, loadMunicipios } from "./lib/data.js";
+import { useHashParam } from "./lib/urlState.js";
 import MapPanel from "./components/MapPanel.jsx";
 import EvolutionPanel from "./components/EvolutionPanel.jsx";
+import RankingPanel from "./components/RankingPanel.jsx";
 import MunicipioPanel from "./components/MunicipioPanel.jsx";
 import SocioPanel from "./components/SocioPanel.jsx";
 import DiputacionPanel from "./components/DiputacionPanel.jsx";
@@ -10,6 +12,7 @@ import AboutPanel from "./components/AboutPanel.jsx";
 const TABS = [
   ["mapa", "Mapa"],
   ["evolucion", "Evolución"],
+  ["ranking", "Ranking"],
   ["municipio", "Municipios"],
   ["socio", "Socioeconómico"],
   ["diputacion", "Diputación"],
@@ -20,8 +23,8 @@ export default function App() {
   const [index, setIndex] = useState(null);
   const [parties, setParties] = useState(null);
   const [municipios, setMunicipios] = useState(null);
-  const [tab, setTab] = useState("mapa");
-  const [munCode, setMunCode] = useState("040"); // Castelló de la Plana
+  const [tab, setTab] = useHashParam("tab", "mapa");
+  const [munCode, setMunCode] = useHashParam("mun", "040"); // Castelló de la Plana
 
   useEffect(() => {
     Promise.all([loadIndex(), loadParties(), loadMunicipios()]).then(([i, p, m]) => {
@@ -44,6 +47,8 @@ export default function App() {
     setTab("municipio");
   }
 
+  const activeTab = TABS.some(([id]) => id === tab) ? tab : "mapa";
+
   return (
     <div className="mx-auto max-w-7xl px-4 pb-16">
       <header className="flex flex-wrap items-end justify-between gap-3 py-6">
@@ -61,7 +66,7 @@ export default function App() {
               key={id}
               onClick={() => setTab(id)}
               className={`rounded-lg px-3 py-1.5 text-sm font-medium transition ${
-                tab === id ? "bg-white text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-900"
+                activeTab === id ? "bg-white text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-900"
               }`}
             >
               {label}
@@ -70,19 +75,23 @@ export default function App() {
         </nav>
       </header>
 
-      {tab === "mapa" && (
+      {activeTab === "mapa" && (
         <MapPanel index={index} parties={parties} municipios={municipios} openMunicipio={openMunicipio} />
       )}
-      {tab === "evolucion" && <EvolutionPanel index={index} parties={parties} municipios={municipios} />}
-      {tab === "municipio" && (
+      {activeTab === "evolucion" && <EvolutionPanel index={index} parties={parties} municipios={municipios} />}
+      {activeTab === "ranking" && (
+        <RankingPanel index={index} parties={parties} municipios={municipios} openMunicipio={openMunicipio} />
+      )}
+      {activeTab === "municipio" && (
         <MunicipioPanel index={index} parties={parties} municipios={municipios} code={munCode} setCode={setMunCode} />
       )}
-      {tab === "socio" && <SocioPanel index={index} parties={parties} municipios={municipios} />}
-      {tab === "diputacion" && <DiputacionPanel index={index} parties={parties} />}
-      {tab === "acerca" && <AboutPanel />}
+      {activeTab === "socio" && <SocioPanel index={index} parties={parties} municipios={municipios} />}
+      {activeTab === "diputacion" && <DiputacionPanel index={index} parties={parties} />}
+      {activeTab === "acerca" && <AboutPanel />}
 
       <footer className="mt-10 border-t border-slate-200 pt-4 text-xs text-slate-400">
         Datos: Ministerio del Interior · Dades Obertes GVA · INE. Elaboración propia; ver pestaña Metodología.
+        La URL refleja la vista actual: copia el enlace para compartirla.
       </footer>
     </div>
   );

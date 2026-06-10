@@ -15,7 +15,14 @@ export default function AboutPanel() {
             <b>Autonómicas a Corts Valencianes (1987–2023):</b>{" "}
             <a className="text-sky-600 hover:underline" href="https://dadesobertes.gva.es" target="_blank" rel="noreferrer">
               Dades Obertes GVA
-            </a>. La convocatoria de 1983 no está publicada en el portal y no se incluye.
+            </a>, a nivel de mesa agregado a sección censal.
+          </li>
+          <li>
+            <b>Autonómicas de 1983:</b> Archivo Histórico Electoral de{" "}
+            <a className="text-sky-600 hover:underline" href="http://www.argos.gva.es/ahe/" target="_blank" rel="noreferrer">
+              ARGOS (GVA)
+            </a>, a nivel de municipio (sin detalle por sección censal). Gàtova no se incluye porque
+            pertenecía a la provincia de València hasta 1995.
           </li>
           <li>
             <b>Variables socioeconómicas (2015–2023):</b> Atlas de Distribución de Renta de los Hogares del{" "}
@@ -51,6 +58,12 @@ export default function AboutPanel() {
           <li>
             <b>Municipales en municipios pequeños:</b> en los de menos de 250 habitantes (listas abiertas) se toma
             como voto de cada candidatura el de su candidato más votado.
+          </li>
+          <li>
+            <b>Indicadores:</b> el <i>margen</i> es la diferencia en puntos entre la 1ª y la 2ª candidatura; el{" "}
+            <i>NEP</i> (número efectivo de partidos, Laakso-Taagepera) mide la fragmentación (1/Σp²); la{" "}
+            <i>volatilidad</i> es el índice de Pedersen (½·Σ|Δ%|) entre las dos elecciones comparadas, calculado
+            sobre las familias canónicas de partidos.
           </li>
         </ul>
       </Card>

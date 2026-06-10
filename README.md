@@ -10,6 +10,7 @@ por sección censal, cruzados con variables socioeconómicas del INE.
   - `download.py` — baja los ficheros oficiales del Ministerio del Interior (infoelectoral) a `pipeline/raw/` (no versionado).
   - `parse_mir.py` — parsea los DAT de ancho fijo del MIR (generales, municipales, europeas) y filtra la provincia 12.
   - `parse_gva.py` — parsea los CSV de Dades Obertes GVA (autonómicas a Corts 1987–2023).
+  - `parse_argos.py` — autonómicas de 1983 desde el Archivo Histórico Electoral de ARGOS (nivel municipio).
   - `parse_ine.py` — Atlas de Renta de los Hogares del INE (renta, edad, Gini… por sección censal, 2015–2023).
   - `parties.py` / `normalize.py` — tabla canónica de partidos (eje ideológico, bloques, colores), resumen agregado y estimación de la Diputación Provincial.
   - `out/` — JSON resultantes (versionados; son los datos que sirve la web).
@@ -31,6 +32,7 @@ cd pipeline
 python3 download.py    # ~300 MB de ZIPs oficiales
 python3 parse_mir.py
 python3 parse_gva.py   # requiere los corts*.csv en raw/ (ver parse_gva.py)
+python3 parse_argos.py # autonómicas 1983 (descarga de argos.gva.es con caché)
 python3 parse_ine.py
 python3 normalize.py
 ```
@@ -45,7 +47,7 @@ push a `main`. Activa Pages en Settings → Pages → Source: GitHub Actions.
 
 ## Fuentes y avisos
 
-Ministerio del Interior (infoelectoral), Dades Obertes GVA, INE (ADRH y seccionado censal).
-La composición de la Diputación es una **estimación** (D'Hondt por partido judicial). Las
-autonómicas de 1983 no están en el portal de la GVA y no se incluyen. Ver pestaña
-«Metodología» de la web para el detalle completo.
+Ministerio del Interior (infoelectoral), Dades Obertes GVA, ARGOS AHE, INE (ADRH y
+seccionado censal). La composición de la Diputación es una **estimación** (D'Hondt por
+partido judicial). Las autonómicas de 1983 proceden de ARGOS y solo tienen detalle
+municipal. Ver pestaña «Metodología» de la web para el detalle completo.

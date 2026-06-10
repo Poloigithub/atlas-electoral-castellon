@@ -2,15 +2,16 @@ import { useEffect, useMemo, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import { Card, Select, ResultBar } from "./ui.jsx";
+import { Card, Select, SearchSelect, ResultBar } from "./ui.jsx";
 import {
   loadSummary, loadSocio, loadElection, rankVotes, participation, fmtInt, fmtNum, fmtPct,
 } from "../lib/data.js";
+import { useHashParam } from "../lib/urlState.js";
 
 export default function MunicipioPanel({ index, parties, municipios, code, setCode }) {
   const [summary, setSummary] = useState(null);
   const [socio, setSocio] = useState(null);
-  const [kind, setKind] = useState("municipales");
+  const [kind, setKind] = useHashParam("mtipo", "municipales");
   const [council, setCouncil] = useState(null); // {year: {pid: concejales}}
 
   useEffect(() => {
@@ -47,7 +48,10 @@ export default function MunicipioPanel({ index, parties, municipios, code, setCo
   const muni = municipios[code];
 
   const munOptions = useMemo(
-    () => Object.entries(municipios).sort((a, b) => a[1].name.localeCompare(b[1].name, "es")),
+    () =>
+      Object.entries(municipios)
+        .sort((a, b) => a[1].name.localeCompare(b[1].name, "es"))
+        .map(([c, m]) => [c, m.name]),
     [municipios]
   );
 
@@ -83,11 +87,7 @@ export default function MunicipioPanel({ index, parties, municipios, code, setCo
     <div className="space-y-4">
       <Card>
         <div className="flex flex-wrap items-end gap-3">
-          <Select label="Municipio" value={code} onChange={setCode} className="min-w-60">
-            {munOptions.map(([c, m]) => (
-              <option key={c} value={c}>{m.name}</option>
-            ))}
-          </Select>
+          <SearchSelect label="Municipio" value={code} onChange={setCode} options={munOptions} className="min-w-60" />
           <Select label="Tipo de elección" value={kind} onChange={setKind}>
             <option value="municipales">Municipales</option>
             <option value="generales">Generales</option>

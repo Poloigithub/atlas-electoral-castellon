@@ -71,6 +71,37 @@ export function blocShare(votes, parties, bloc) {
   return tot ? (100 * blocV) / tot : null;
 }
 
+// margen de victoria: puntos porcentuales entre el 1º y el 2º
+export function margin(votes) {
+  const r = rankVotes(votes);
+  if (!r.length) return null;
+  const tot = r.reduce((a, [, v]) => a + v, 0);
+  if (!tot) return null;
+  const s1 = (100 * r[0][1]) / tot;
+  const s2 = r[1] ? (100 * r[1][1]) / tot : 0;
+  return s1 - s2;
+}
+
+// número efectivo de partidos (Laakso-Taagepera): 1/Σp²
+export function enp(votes) {
+  const tot = Object.values(votes).reduce((a, b) => a + b, 0);
+  if (!tot) return null;
+  let s = 0;
+  for (const v of Object.values(votes)) s += (v / tot) ** 2;
+  return s ? 1 / s : null;
+}
+
+// volatilidad de Pedersen entre dos elecciones: ½·Σ|Δ% por partido|
+export function pedersen(votesA, votesB) {
+  const totA = Object.values(votesA).reduce((a, b) => a + b, 0);
+  const totB = Object.values(votesB).reduce((a, b) => a + b, 0);
+  if (!totA || !totB) return null;
+  const pids = new Set([...Object.keys(votesA), ...Object.keys(votesB)]);
+  let sum = 0;
+  for (const pid of pids) sum += Math.abs((100 * (votesA[pid] || 0)) / totA - (100 * (votesB[pid] || 0)) / totB);
+  return sum / 2;
+}
+
 export function partyShare(votes, pid) {
   const tot = Object.values(votes).reduce((a, b) => a + b, 0);
   const v = votes[pid] || 0;

@@ -25,6 +25,13 @@ export function participationColor(p) {
   return tint("#1e40af", 0.1 + 0.9 * t);
 }
 
+// escala divergente para cambios entre elecciones: sube -> pos, baja -> neg
+export function divergingColor(delta, maxAbs, posHex, negHex = "#525252") {
+  if (delta == null) return "#e2e8f0";
+  const t = Math.min(Math.abs(delta) / maxAbs, 1);
+  return tint(delta >= 0 ? posHex : negHex, 0.08 + 0.92 * t);
+}
+
 // indicador socioeconómico genérico (verde) entre min y max
 export function indicatorColor(v, min, max) {
   if (v == null) return "#e2e8f0";

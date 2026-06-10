@@ -2,8 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import { Card, Select } from "./ui.jsx";
+import { Card, Select, SearchSelect, MiniButton } from "./ui.jsx";
 import { loadSummary, participation, fmtPct } from "../lib/data.js";
+import { useHashParam } from "../lib/urlState.js";
+import { rowsToCsv } from "../lib/export.js";
 
 const KINDS = [
   ["todas", "Todas"],
@@ -15,9 +17,9 @@ const KINDS = [
 
 export default function EvolutionPanel({ index, parties, municipios }) {
   const [summary, setSummary] = useState(null);
-  const [kind, setKind] = useState("generales");
-  const [scope, setScope] = useState("prov");
-  const [mode, setMode] = useState("partidos");
+  const [kind, setKind] = useHashParam("ek", "generales");
+  const [scope, setScope] = useHashParam("eamb", "prov");
+  const [mode, setMode] = useHashParam("emodo", "partidos");
 
   useEffect(() => {
     loadSummary().then(setSummary);
@@ -96,9 +98,25 @@ export default function EvolutionPanel({ index, parties, municipios }) {
       : { izquierda: "Izquierda", centro: "Centro", derecha: "Derecha", participacion: "Participación" }[k];
 
   const munOptions = useMemo(
-    () => Object.entries(municipios).sort((a, b) => a[1].name.localeCompare(b[1].name, "es")),
+    () => [
+      ["prov", "Provincia de Castellón"],
+      ...Object.entries(municipios)
+        .sort((a, b) => a[1].name.localeCompare(b[1].name, "es"))
+        .map(([code, m]) => [code, m.name]),
+    ],
     [municipios]
   );
+
+  function exportCsv() {
+    rowsToCsv(
+      rows.map((r) => {
+        const out = { eleccion: r.name };
+        for (const k of lineKeys) out[lineLabel(k)] = r[k] != null ? r[k] : "";
+        return out;
+      }),
+      `evolucion-${kind}-${scope}-${mode}.csv`
+    );
+  }
 
   return (
     <Card>
@@ -108,17 +126,15 @@ export default function EvolutionPanel({ index, parties, municipios }) {
             <option key={v} value={v}>{l}</option>
           ))}
         </Select>
-        <Select label="Ámbito" value={scope} onChange={setScope} className="min-w-52">
-          <option value="prov">Provincia de Castellón</option>
-          {munOptions.map(([code, m]) => (
-            <option key={code} value={code}>{m.name}</option>
-          ))}
-        </Select>
+        <SearchSelect label="Ámbito" value={scope} onChange={setScope} options={munOptions} className="min-w-52" />
         <Select label="Ver" value={mode} onChange={setMode}>
           <option value="partidos">% voto por partido</option>
           <option value="bloques">% voto por bloque ideológico</option>
           <option value="participacion">Participación</option>
         </Select>
+        <div className="ml-auto">
+          <MiniButton onClick={exportCsv} title="Descargar la serie como CSV">CSV</MiniButton>
+        </div>
       </div>
       <div className="h-[460px]">
         <ResponsiveContainer>

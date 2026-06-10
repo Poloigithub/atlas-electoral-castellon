@@ -24,6 +24,14 @@
   "secciones": true
  },
  {
+  "id": "aut-198305",
+  "kind": "autonomicas",
+  "label": "Autonòmiques (Corts)",
+  "year": 1983,
+  "month": 5,
+  "secciones": false
+ },
+ {
   "id": "mun-198305",
   "kind": "municipales",
   "label": "Municipales",
